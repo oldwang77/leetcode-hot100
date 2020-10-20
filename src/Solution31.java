@@ -25,28 +25,42 @@ public class Solution31 {
             Arrays.sort(nums);
             return;
         }
+
         // 此时一定存在下一个排列
-        int i = num.length - 1;
-        while (i >= 1 && nums[i - 1] >= num[i]) {
+        int i = num.length - 2;
+        while (i >= 0 && nums[i] >= num[i + 1]) {
             i--;
         }
-        int j = 0;
         if (i >= 0) {
-            while (j < num.length && num[j] > num[i]) {
+            int j = nums.length - 1;
+            while (j >= 0 && num[j] <= num[i]) {
                 j--;
             }
+            change(num, i, j);
         }
 
-
-        for (int i = 0; i < num.length; i++) {
-            nums[i] = num[i];
+        // [i+1,num.length-i]全部进行翻转
+        int start = i + 1, end = num.length - 1;
+        while (start < end) {
+            change(num, start, end);
+            start++;
+            end--;
+        }
+        for (int k = 0; k < num.length; k++) {
+            nums[k] = num[k];
         }
         return;
     }
 
+    public void change(int[] num, int i, int j) {
+        int t = num[i];
+        num[i] = num[j];
+        num[j] = t;
+    }
+
     public static void main(String[] args) {
         Solution31 s = new Solution31();
-        int[] a = {1, 3, 2};
+        int[] a = {1, 2, 3};
         s.nextPermutation(a);
     }
 }
