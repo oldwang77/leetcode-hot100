@@ -1,4 +1,4 @@
-public class Solution543 {
+public class Solution544 {
     // 二叉树的 每个节点的左右子树的高度和 的最大值。
     int maxx = 0;
     public int diameterOfBinaryTree(TreeNode root) {
