@@ -18,7 +18,7 @@ import java.util.HashMap;
  * }
  * }
  */
-class Solution {
+class Solution538 {
     int ans = 0;
     public TreeNode convertBST(TreeNode root) {
         dfs(root);
