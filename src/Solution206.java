@@ -1,22 +1,37 @@
 import java.util.Stack;
 
 public class Solution206 {
+//    public ListNode reverseList(ListNode head) {
+//        if(head==null) return null;
+//        Stack<ListNode> stack = new Stack<>();
+//        while(head!=null){
+//            stack.push(head);
+//            head = head.next;
+//        }
+//        ListNode ans = stack.pop();
+//        ListNode nowNode = ans;
+//        while(!stack.isEmpty()){
+//            ListNode t = stack.pop();
+//            t.next = null;
+//            ans.next = t;
+//            ans = t;
+//        }
+//        return nowNode;
+//    }
+
     public ListNode reverseList(ListNode head) {
-        if(head==null) return null;
-        Stack<ListNode> stack = new Stack<>();
-        while(head!=null){
-            stack.push(head);
-            head = head.next;
+        if(head==null || head.next==null){
+            return head;
         }
-        ListNode ans = stack.pop();
-        ListNode nowNode = ans;
-        while(!stack.isEmpty()){
-            ListNode t = stack.pop();
-            t.next = null;
-            ans.next = t;
-            ans = t;
+        ListNode pre=null,cur=head;
+        while(cur!=null){
+            ListNode next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
         }
-        return nowNode;
+
+        return cur;
     }
 
     public static void main(String[] args) {
